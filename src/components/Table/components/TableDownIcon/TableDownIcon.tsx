@@ -1,0 +1,28 @@
+import { type IconProps } from 'components/icons/Icon';
+import React from 'react';
+
+const TableDownIcon: React.FC<IconProps> = ({
+    ...props
+}: IconProps) => {
+    return (
+        <svg
+          data-testid="icon"
+          width='100%'
+          viewBox='0 0 1440 266'
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          {...props}
+        >
+            <g clip-path="url(#clip0_113_1895)">
+            <path d="M1441.96 140.112L1075.74 80.4697L1075.26 80.3916L1074.8 80.543L724.33 195.427L533.763 164.995L533.126 164.894L532.551 165.182L336.125 263.631L173.733 130.91L173.131 130.418L172.354 130.462L-2 140.345V-1129.87L71.5693 -1221.66L127.964 -1114.72L128.18 -1114.32L128.553 -1114.04L234.635 -1036.48L235.774 -1035.65L236.941 -1036.44L371.429 -1128.06L514.057 -1007.48L515.066 -1006.63L516.247 -1007.23L756.732 -1128.37L894.634 -1068.33L896.069 -1067.71L897.021 -1068.95L1014.73 -1222.84L1123.4 -1176.46L1123.58 -1176.39L1123.76 -1176.35L1236.88 -1151.74L1238.3 -1151.43L1239.03 -1152.69L1301.95 -1260.71L1378.21 -1223.49L1379.92 -1222.65L1380.84 -1224.33L1452.94 -1356.07L1441.96 140.112Z" fill="#0D1A2A" stroke="#A1D1DA" stroke-width="4"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_113_1895">
+            <rect width='100%' height='100%' fill="white"/>
+            </clipPath>
+            </defs>
+        </svg>
+    );
+};
+
+export default TableDownIcon;

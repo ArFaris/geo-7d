@@ -1,0 +1,62 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/global.scss';
+
+.table {
+    border-collapse: collapse;
+    margin-inline: auto;
+    white-space: pre-line;
+    
+    &__wrapper {
+        overflow-x: auto;
+        margin-inline: auto;
+    }
+}
+
+.table th, .table td {
+    border: 1px solid $table-line;
+    text-align: center;
+    padding: $padd-20 $padd-24;
+}
+
+.title > * {
+    text-align: center;
+}
+
+.title {
+    &-first {
+        margin-bottom: 10px;
+    }
+
+    &-second {
+        margin-bottom: 30px;
+    }
+}
+
+.decoration {
+    position: relative;
+    overflow-x: hidden;
+    cursor: auto;
+    z-index: -1;
+
+    &-up {
+        top: 6px;
+    }
+
+    &-down {
+        top: -5px;
+    }
+}
+
+.wrapper {
+    background-color: $primary;
+}
+
+@media(max-width: 1024px) {
+    .table th, .table td {
+        padding: $padd-12 $padd-16;
+    }
+}
+
+.main {
+    min-width: 100%;
+}

@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Главная",
+    "news": "Новости",
+    "reviews": "Обзоры",
+    "analytics": "Аналитика",
+    "articles": "Статьи",
+    "partners": "Партнеры",
+    "sources": "Ссылки",
+    "shop": "Магазин",
+    "about": "О проекте"
+  },
+  "buttons": {
+    "download": "Скачать PDF",
+    "register": "Регистрация",
+    "login": "Вход"
+  },
+  "common": {
+    "author": "Автор",
+    "date": "Дата",
+    "reading_time": "Время чтения",
+    "views": "Просмотров"
+  },
+  "subtitles": {
+    "vestnik": "Маркшейдерский вестник",
+    "other": "Другие статьи"
+  }
+}

@@ -1,0 +1,18 @@
+export type Article = {
+    name: string;
+    slug: string;
+    part?: string;
+    createdAt: string;
+    readingTime: string;
+    views: number;
+    likes: number;
+    category: string;
+    subcategory: string;
+    pdfPath: string | null;
+}
+
+export type Articles = {
+    name: string;
+    slug: string;
+    part?: string;
+}

@@ -1,0 +1,56 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/global.scss';
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 180px;
+    max-width: 1100px;
+    margin-inline: auto;
+}
+
+.line {
+    background-color: $dark;
+    max-width: 350px;
+    width: 100%;
+    height: 1px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: $padd-40;
+    margin-block: $padd-80;
+    align-items: center;
+}
+
+.link {
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    background-color: $accent;
+    border: 1px solid $secondary;
+    padding-block: $padd-24;
+    text-align: center;
+    transition: $transition;
+    cursor: pointer;
+
+    @media(hover: hover) {
+        &:hover {
+            background-color: $button-strong-hover;
+        }
+    }
+}
+
+@media(max-width: 1024px) {
+    .links, .header {
+        padding-inline: 20px;
+        width: 100%;
+    }
+
+    .header {
+        margin-top: 120px;
+    }
+}

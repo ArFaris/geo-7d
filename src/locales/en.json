@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Home",
+    "news": "News",
+    "reviews": "Reviews",
+    "analytics": "Analytics",
+    "articles": "Articles",
+    "partners": "Partners",
+    "sources": "Sources",
+    "shop": "Shop",
+    "about": "About"
+  },
+  "buttons": {
+    "download": "Download PDF",
+    "register": "Sign up",
+    "login": "Log in"
+  },
+  "common": {
+    "author": "Author",
+    "date": "Date",
+    "reading_time": "Reading time",
+    "views": "Views"
+  },
+  "subtitles": {
+    "vestnik": "The Surveyor's Bulletin",
+    "other": "Other articles"
+  }
+}

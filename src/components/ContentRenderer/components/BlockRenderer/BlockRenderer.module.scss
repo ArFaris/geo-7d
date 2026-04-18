@@ -1,0 +1,34 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/global.scss';
+
+.text {
+    max-width: 680px;
+    width: 100%;
+    padding-right: 80px;
+    white-space: pre-line;
+}
+
+.list {
+    padding-bottom: 14px;
+}
+
+.nums {
+    padding-bottom: $padd-16;
+}
+
+.wrapper {
+    max-width: 100vw;
+    width: 100vw;
+}
+
+@media(max-width: 1280px) {
+    .text {
+        padding-right: $padd-40;
+    }
+}
+
+@media(max-width: 1024px) {
+    .text {
+        padding-right: 0;
+    }
+}

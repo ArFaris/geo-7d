@@ -1,0 +1,47 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/global.scss';
+
+.article {
+    display: flex;
+    align-items: center;
+    gap: $padd-40;
+}
+
+.main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: $padd-32;
+}
+
+.category {
+    display: inline-flex;
+    border: 1px solid $secondary;
+    padding: 6px $padd-20;
+    margin-bottom: $padd-20;
+    margin-top: 124px;
+}
+
+.group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: $padd-20;
+}
+
+@media(max-width: 768px) {
+    .main {
+        height: auto;
+        align-items: center;
+    }
+
+    .links {
+        margin-bottom: $padd-20;
+    }
+}

@@ -1,0 +1,12 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/global.scss';
+
+.wrapper {
+    min-width: 50%;
+    border: 1px solid $secondary;
+    max-height: calc(100vh - 284px);
+    height: 100%;
+    margin-top: 124px;
+    overflow-y: scroll;
+    overscroll-behavior: contain;
+}
