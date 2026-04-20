@@ -46,7 +46,7 @@
 
 .earth {
     &__wrapper {
-        position: absolute;
+        position: fixed;
         max-height: 64%;
         width: 100%;
         overflow-y: hidden;
