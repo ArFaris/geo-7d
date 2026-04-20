@@ -63,6 +63,7 @@ const AuthWrapper: React.FC<AuthWrapperProps> = ({
             try {
                 setLoading(true);
                 await registerUser(user.name, user.email, user.password);
+                alert('Письмо для подтверждения отправлено на ваш email. Перейдите по ссылке в письме.');
             } catch(error) {
                 console.error(error);
             } finally {
