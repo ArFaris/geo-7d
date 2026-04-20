@@ -4,6 +4,11 @@ import HomePage from 'App/pages/HomePage';
 import ArticlesPage from 'App/pages/ArticlesPage';
 import ArticlePage from 'App/pages/ArticlePage';
 import LinksPage from 'App/pages/LinksPage';
+import ProfilePage from 'App/pages/ProfilePage';
+import SignUpPage from 'App/pages/AuthPages/SignUpPage';
+import SignInPage from 'App/pages/AuthPages/SignInPage';
+import { PrivateRoute } from './privateRoute';
+import AuthCallback from 'App/pages/AuthPages/Callback';
 
 export const routes = {
     main: {
@@ -70,6 +75,18 @@ export const routes = {
         mask: "/about",
         create: () => "/about",
     },
+    profile: {
+        mask: '/profile',
+        create: () => "/profile",
+    },
+    auth: {
+        mask: "/registration",
+        create: () => `/registration`
+    },
+    login: {
+        mask: "/login",
+        create: () => `/login`
+    }
 };
 
 export const routesConfig: RouteObject[] = [
@@ -127,11 +144,11 @@ export const routesConfig: RouteObject[] = [
             },
             {
                 path: routes.partners.mask,
-                element: <LinksPage />,
+                element: <HomePage />,
             },
             {
                 path: routes.links.mask,
-                element: <LinksPage />,
+                element: <HomePage />,
             },
             {
                 path: routes.shop.mask,
@@ -141,6 +158,26 @@ export const routesConfig: RouteObject[] = [
                 path: routes.about.mask,
                 element: <HomePage />,
             },
+            {
+                path: routes.profile.mask,
+                element: (
+                    <PrivateRoute>
+                        <ProfilePage />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: routes.auth.mask,
+                element: <SignUpPage />
+            },
+            {
+                path: routes.login.mask,
+                element: <SignInPage />
+            },
+            {
+                path: '/auth/callback',
+                element: <AuthCallback />
+            }
         ],
     },
     {

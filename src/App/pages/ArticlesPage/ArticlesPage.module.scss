@@ -86,6 +86,13 @@
     }
 }
 
+.earh {
+    position: fixed;
+    top: 0;
+    left: -45%;
+    z-index: -1;
+}
+
 @media(max-width: 1024px) {
     .links, .header {
         padding-inline: 20px;
@@ -94,5 +101,9 @@
 
     .header {
         margin-top: 120px;
+    }
+
+    .articles {
+        grid-template-columns: 1fr;
     }
 }

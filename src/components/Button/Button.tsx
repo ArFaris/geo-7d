@@ -14,6 +14,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 
   className?: string;
   disabled?: string;
+  slot?: React.ReactNode;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -21,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   view,
   className,
+  slot,
   disabled = false,
   ...props
 }) => {
@@ -30,6 +32,7 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled || loading}
       {...props}
     >
+      {slot}
       {loading && <Loader size="s" className={s.button__loader} />}
       <Text color={view === 'dark' ? 'secondary' : 'primary'} tag="span" view="button">
         {children}

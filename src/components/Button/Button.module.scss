@@ -30,7 +30,9 @@
         color: var(--l-button-text);
     }
 
-    &-light {
+    &-light { 
+        border: 1px solid $dark;
+        
         @media(hover: hover) {
             &:hover:not(:disabled) {
                 --l-button-background: #{$button-light-hover};

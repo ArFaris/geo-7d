@@ -8,6 +8,9 @@ import CloseIcon from 'components/icons/CloseIcon';
 import Button from 'components/Button';
 import LanguageSwitcher from 'components/LanguageSwitcher';
 import { useLanguage } from 'contexts/LanguageContext';
+import { useNavigate } from 'react-router-dom';
+import UserIcon from 'components/icons/UserIcon';
+import { useAuth } from 'contexts/AuthContext';
 
 type BurgerMenuProps = {
     isOpen: boolean,
@@ -25,6 +28,8 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
     className}: 
 BurgerMenuProps) => {
     const { t } = useLanguage();
+    const navigate = useNavigate();
+    const { user, loading } = useAuth();
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -75,8 +80,9 @@ BurgerMenuProps) => {
             </nav>
 
             <div className={cn(s.buttons, s.menu__buttons)}>
-                <Button view='dark' className={s.btn}>{t('buttons.register')}</Button>
-                <Button view='dark' className={s.btn}>{t('buttons.login')}</Button>
+                {!user && <Button view='dark' className={s.btn} onClick={() => { onClose(); navigate('/registration')}}>{t('buttons.register')}</Button>}
+                {!user && <Button view='dark' className={s.btn} onClick={() => { onClose(); navigate('/login')}}>{t('buttons.login')}</Button>}
+                {user && <Button view='dark' className={cn(s.btn, s.btn__user)} onClick={() => { onClose(); navigate('/profile')}}>{t('buttons.profile')}</Button>}
             </div>
         </div>,
         document.body

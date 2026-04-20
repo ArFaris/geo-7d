@@ -1,5 +1,6 @@
 export type Article = {
     name: string;
+    name_en: string;
     slug: string;
     part?: string;
     createdAt: string;
@@ -13,6 +14,7 @@ export type Article = {
 
 export type Articles = {
     name: string;
+    name_en: string;
     slug: string;
     part?: string;
 }

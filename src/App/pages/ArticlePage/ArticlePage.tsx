@@ -11,13 +11,14 @@ import DotIcon from 'components/ArticleWrapper/components/DotIcon';
 import PdfViewer from './components/PdfViewer';
 import { useEffect, useState } from 'react';
 import { getPdfUrl } from 'api/api';
+import LoadingScreen from 'components/LoadingScreen';
 
 const ArticlePage = () => {
     const { locale, t } = useLanguage();
     const { id } = useParams();
     const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
-    const { data } = useArticle(id || '');
+    const { data, isLoading } = useArticle(id || '');
 
     useEffect(() => {
         const getPdf = async () => {
@@ -33,6 +34,8 @@ const ArticlePage = () => {
         return null;
     }
 
+    if (isLoading) return <LoadingScreen />
+
     return (
         <section className={cn(s.page, s.article)}>
             <PdfViewer pdfUrl={pdfUrl}/>
@@ -40,7 +43,7 @@ const ArticlePage = () => {
             <div className={s.main}>
                 <div>
                     <Text className={s.category}>{t(`nav.${data.category}`)}</Text>
-                    <Text weight='bold' view='title-small'>{data.name}</Text>
+                    <Text weight='bold' view='title-small'>{locale === 'ru' ? `${data.name}` : `${data.name_en}`}</Text>
                 </div>
 
                 <div>

@@ -10,6 +10,8 @@ import MenuIcon from 'components/icons/MenuIcon';
 import cn from 'classnames';
 import LanguageSwitcher from 'components/LanguageSwitcher';
 import { useLanguage } from 'contexts/LanguageContext';
+import { useAuth } from 'contexts/AuthContext';
+import UserIcon from 'components/icons/UserIcon';
 
 export type Link = {
     key: string,
@@ -40,6 +42,7 @@ const Header: React.FC<HeaderProps> = ({image='/logo.svg', links=navKeys}: Heade
     const frameId = useRef<number>(0);
     const { t } = useLanguage();
     const navigate = useNavigate();
+    const { user, loading } = useAuth();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -82,10 +85,13 @@ const Header: React.FC<HeaderProps> = ({image='/logo.svg', links=navKeys}: Heade
 
                     <img src={image} alt='Логотип' onClick={() => navigate('/')} className={s.logo}/>
 
-                    <div className={s.buttons}>
-                        <Button view='strong'>{t('buttons.register')}</Button>
-                        <Button view='strong'>{t('buttons.login')}</Button>
-                    </div>
+                    {!user && !loading && 
+                        <div className={s.buttons}>
+                            <Button view='strong' onClick={() => navigate('/registration')}>{t('buttons.register')}</Button>
+                            <Button view='strong' onClick={() => navigate('/login')}>{t('buttons.login')}</Button>
+                        </div>}
+
+                    {user && <UserIcon className={s.user} onClick={() => navigate('/profile')}/>}
 
                     <MenuIcon onClick={open} className={s.menu}/>
                 </div>

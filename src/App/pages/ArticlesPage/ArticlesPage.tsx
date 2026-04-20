@@ -4,6 +4,8 @@ import { useLanguage } from 'contexts/LanguageContext';
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { useArticles } from 'hooks/useArticles';
+import EarthLeftIcon from 'components/icons/EarthLeft';
+import LoadingScreen from 'components/LoadingScreen';
 
 type ArticlesPageProps = {
     category: string;
@@ -11,14 +13,18 @@ type ArticlesPageProps = {
 }
 
 const ArticlesPage = ({ category, subcategory }: ArticlesPageProps) => {
-    const { t } = useLanguage();
+    const { locale, t } = useLanguage();
     const navigate = useNavigate();
     const isArticlesCategory = category === 'articles';
 
-    const { data } = useArticles({category: category, subcategory: subcategory})
+    const { data, isLoading } = useArticles({category: category, subcategory: subcategory})
+
+    if (isLoading) return <LoadingScreen />
 
     return (
         <section>
+            <EarthLeftIcon className={s.earh}/>
+            
             <header className={s.header}>
                 <span className={s.line}></span>
                 <Text weight='bold' view='title-small' color='secondary' className={s.title}>{t(`nav.${category}`)}</Text>
@@ -43,8 +49,8 @@ const ArticlesPage = ({ category, subcategory }: ArticlesPageProps) => {
                     <article key={item.slug} 
                              onClick={() => navigate(`/${category}${subcategory ? `/${subcategory}` : ''}/${item.slug}`)}
                              className={s.article}>
-                        {item.part && <span className={s.article__part}><Text color='primary'>{item.part}</Text></span>}
-                        <Text color='primary' className={s.title}>{item.name}</Text>
+                        {item.part && <span className={s.article__part}><Text color='primary'>{`${t('common.part')} ${item.part}`}</Text></span>}
+                        <Text color='primary' className={s.title}>{locale === 'ru' ? `${item.name}` : `${item.name_en}`}</Text>
                     </article>
                 ))}
             </div>

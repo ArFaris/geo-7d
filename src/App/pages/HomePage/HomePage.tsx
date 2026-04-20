@@ -2,6 +2,7 @@ import Text from 'components/Text';
 import s from './HomePage.module.scss';
 import { useLanguage } from 'contexts/LanguageContext';
 import { useNavigate } from 'react-router';
+import EarthIcon from 'components/icons/EarthHoriz';
 
 const HomePage = () => {
     const { locale, t } = useLanguage();
@@ -9,6 +10,8 @@ const HomePage = () => {
 
     return (
         <section>
+            <div className={s.earth__wrapper}><EarthIcon className={s.earth}/></div>
+
             <header className={s.header}>
                 <span className={s.line}></span>
                 <Text weight='medium' view='title-small' color='secondary'>{locale === 'ru' ? 'РАЗДЕЛЫ' : 'SECTIONS'}</Text>
