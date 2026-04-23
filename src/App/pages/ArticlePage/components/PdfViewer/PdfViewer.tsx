@@ -48,7 +48,7 @@ const PdfViewer = ({ pdfUrl }: { pdfUrl: string | null}) => {
                             pageNumber={index + 1}
                             scale={scale}
                             renderTextLayer={false}
-                            renderAnnotationLayer={false}
+                            renderAnnotationLayer={true}
                         />
                     ))}
                 </Document>

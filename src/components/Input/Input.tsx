@@ -14,7 +14,10 @@ export type InputProps = Omit<
   afterSlot?: React.ReactNode;
 
   error?: boolean;
+
   editmode?: boolean;
+
+  theme?: 'light' | 'dark'
 };
 
 const Input: React.FC<InputProps> = ({
@@ -25,6 +28,7 @@ const Input: React.FC<InputProps> = ({
   error,
   placeholder,
   editmode,
+  theme = 'dark',
   ...props}) =>
 {
   const [searchText, setSearchText] = useState('');
@@ -41,10 +45,10 @@ const Input: React.FC<InputProps> = ({
       onChange(event.target.value);
     },
     [onChange]
-  );
+  ); 
 
   return (
-    <div className={cn(s.input, className, error && s.error, editmode && s.editmode)}>
+    <div className={cn(s.input, className, error && s.error, editmode && s.editmode, theme === 'light' && s.light)}>
       <input type="text" value={value} {...props} placeholder={placeholder || 'Текст'} onChange={handleChange}/>
       <div className={s.input__after}>
         {afterSlot}

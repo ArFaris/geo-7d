@@ -2,13 +2,16 @@ import s from './AuthWrapper.module.scss';
 import Text from 'components/Text';
 import Input from 'components/Input';
 import { ZodError } from 'zod';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UserShema } from 'shared/schemas/user.schema';
 import { validation } from 'shared/utils/validation-error';
 import Button from 'components/Button';
 import { useLanguage } from 'contexts/LanguageContext';
 import EarthLeftIcon from 'components/icons/EarthLeft';
 import { loginUser, registerUser } from 'api/api';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from 'contexts/AuthContext';
+import Title from 'components/Title';
 
 export type InputAttributes = {
     text: string,
@@ -29,6 +32,15 @@ const AuthWrapper: React.FC<AuthWrapperProps> = ({
     const { t } = useLanguage();
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [loading, setLoading] = useState(false);
+
+    const { user } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) {
+            navigate('/profile');
+        }
+    }, [user]);
 
     const handleInputSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
         if (loading) return;
@@ -85,12 +97,8 @@ const AuthWrapper: React.FC<AuthWrapperProps> = ({
     return (
         <form onSubmit={(e) => handleInputSubmit(e)} className={s.page}>
             <EarthLeftIcon className={s.earh}/>
-            
-            <header className={s.header}>
-                <span className={s.line}></span>
-                <Text className={s.title} weight='medium' view='title-small' color='secondary'>{t(`buttons.${type}`)}</Text>
-                <span className={s.line}></span>
-            </header>
+             
+            <Title title={type} />
 
             <div className={s.form}>
                 <div className={s.fields}>

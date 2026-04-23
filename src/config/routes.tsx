@@ -3,61 +3,17 @@ import App from '../App';
 import HomePage from 'App/pages/HomePage';
 import ArticlesPage from 'App/pages/ArticlesPage';
 import ArticlePage from 'App/pages/ArticlePage';
-import LinksPage from 'App/pages/LinksPage';
 import ProfilePage from 'App/pages/ProfilePage';
 import SignUpPage from 'App/pages/AuthPages/SignUpPage';
 import SignInPage from 'App/pages/AuthPages/SignInPage';
 import { PrivateRoute } from './privateRoute';
 import AuthCallback from 'App/pages/AuthPages/Callback';
+import DictionaryPage from 'App/pages/DictionaryPage';
 
 export const routes = {
     main: {
         mask: "/",
         create: () => "/",
-    },
-    news: {
-        mask: "/news",
-        create: () => "/news",
-    },
-    newsDetail: {
-        mask: "/news/:id",
-        create: (id: string | number) => `/news/${id}`,
-    },
-    reviews: {
-        mask: "/reviews",
-        create: () => "/reviews",
-    },
-    reviewDetail: {
-        mask: "/reviews/:id",
-        create: (id: string | number) => `/reviews/${id}`,
-    },
-    analytics: {
-        mask: "/analytics",
-        create: () => "/analytics",
-    },
-    analyticsDetail: {
-        mask: "/analytics/:id",
-        create: (id: string | number) => `/analytics/${id}`,
-    },
-    articles: {
-        mask: "/articles",
-        create: () => "/articles",
-    },
-    vestnik: {
-        mask: "/articles/vestnik",
-        create: () => "/articles/vestnik",
-    },
-    vestnikDetail: {
-        mask: "/articles/vestnik/:id",
-        create: (id: string | number) => `/articles/vestnik/${id}`,
-    },
-    otherArticles: {
-        mask: "/articles/other",
-        create: () => "/articles/other",
-    },
-    otherArticleDetail: {
-        mask: "/articles/other/:id",
-        create: (id: string | number) => `/articles/other/${id}`,
     },
     partners: {
         mask: "/partners",
@@ -86,7 +42,27 @@ export const routes = {
     login: {
         mask: "/login",
         create: () => `/login`
-    }
+    },
+    dictionary: {
+        mask: "/dictionary",
+        create: () => "/dictionary",
+    },
+    articleByCategoryDetail: {
+        mask: "/content/articles/:subcategory/:id",
+        create: (subcategory: string, id: string | number) => `/content/articles/${subcategory}/${id}`,
+    },
+    articleDetail: {
+        mask: "/content/:type/:id",
+        create: (type: string, id: string | number) => `/content/${type}/${id}`,
+    },
+    articlesByTypeAndSubcategory: {
+        mask: "/content/articles/:subcategory",
+        create: (subcategory: string) => `/content/articles/${subcategory}`,
+    },
+    articlesByType: {
+        mask: "/content/:type",
+        create: (type: string) => `/content/${type}`,
+    },
 };
 
 export const routesConfig: RouteObject[] = [
@@ -97,50 +73,6 @@ export const routesConfig: RouteObject[] = [
             {
                 index: true,
                 element: <HomePage />,
-            },
-            {
-                path: routes.news.mask,
-                element: <ArticlesPage category='news'/>,
-            },
-            {
-                path: routes.newsDetail.mask,
-                element: <ArticlePage />,
-            },
-            {
-                path: routes.reviews.mask,
-                element: <ArticlesPage category='reviews'/>,
-            },
-            {
-                path: routes.reviewDetail.mask,
-                element: <ArticlePage />,
-            },
-            {
-                path: routes.analytics.mask,
-                element: <ArticlesPage category='analytics'/>,
-            },
-            {
-                path: routes.analyticsDetail.mask,
-                element: <ArticlePage />,
-            },
-            {
-                path: routes.articles.mask,
-                element: <ArticlesPage category='articles' subcategory='vestnik'/>,
-            },
-            {
-                path: routes.vestnik.mask,
-                element: <ArticlesPage category='articles' subcategory='vestnik'/>,
-            },
-            {
-                path: routes.otherArticles.mask,
-                element: <ArticlesPage category='articles' subcategory='other'/>,
-            },
-            {
-                path: routes.vestnikDetail.mask,
-                element: <ArticlePage />,
-            },
-            {
-                path: routes.otherArticleDetail.mask,
-                element: <ArticlePage />,
             },
             {
                 path: routes.partners.mask,
@@ -177,7 +109,27 @@ export const routesConfig: RouteObject[] = [
             {
                 path: '/auth/callback',
                 element: <AuthCallback />
-            }
+            },
+            {
+                path: routes.dictionary.mask,
+                element: <DictionaryPage />,
+            },
+            {
+                path: routes.articleByCategoryDetail.mask,
+                element: <ArticlePage />,
+            },
+            {
+                path: "/content/:type/:id",
+                element: <ArticlePage />,
+            },
+            {
+                path: routes.articlesByTypeAndSubcategory.mask,
+                element: <ArticlesPage />,
+            },
+            {
+                path: "/content/:type",
+                element: <ArticlesPage />,
+            },
         ],
     },
     {

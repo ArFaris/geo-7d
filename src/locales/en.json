@@ -8,7 +8,8 @@
     "partners": "Partners",
     "sources": "Sources",
     "shop": "Shop",
-    "about": "About"
+    "about": "About",
+    "dict": "Dictionary"
   },
   "buttons": {
     "download": "Download PDF",
@@ -41,5 +42,28 @@
     "password": "Password",
     "repeat": "Repeat password",
     "email": "Email"
+  },
+  "title": {
+    "home": "Sections",
+    "news": "News",
+    "reviews": "Reviews",
+    "analytics": "Analytics",
+    "articles": "Articles",
+    "partners": "Partners",
+    "sources": "Sources",
+    "shop": "Shop",
+    "about": "About",
+    "dict": "Dictionary",
+    "register": "Sign up",
+    "login": "Log in",
+    "profile": "Profile",
+    "coordinates": "Coordinates",
+    "time": "Time",
+    "geodynamics": "Geodynamics",
+    "geodesy": "Geodesy",
+    "navigation": "Navigation",
+    "positioning": "Positioning",
+    "synchronization": "Synchronization",
+    "miscellaneous": "Miscellaneous"
   }
 }

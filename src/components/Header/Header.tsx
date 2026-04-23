@@ -20,10 +20,10 @@ export type Link = {
 
 const navKeys: Link[] = [
   { key: 'nav.home', to: '/' },
-  { key: 'nav.news', to: '/news' },
-  { key: 'nav.reviews', to: '/reviews' },
-  { key: 'nav.analytics', to: '/analytics' },
-  { key: 'nav.articles', to: '/articles' },
+  { key: 'nav.news', to: 'content/news' },
+  { key: 'nav.reviews', to: 'content/reviews' },
+  { key: 'nav.analytics', to: 'content/analytics' },
+  { key: 'nav.articles', to: 'content/articles/vestnik' },
   { key: 'nav.partners', to: '/partners' },
   { key: 'nav.sources', to: '/links' },
   { key: 'nav.shop', to: '/shop' },
@@ -101,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({image='/logo.svg', links=navKeys}: Heade
                 })}>
                     {
                         links.map(link =>
-                        <div key={link.to} className={s.borderEffect} onClick={() => navigate(link.to)}>
+                        <div key={link.to} className={cn(s.borderEffect, s.borderEffect__light)} onClick={() => navigate(link.to)}>
                             <Text color='primary' view="p-16">
                             {t(link.key)}
                         </Text></div>)

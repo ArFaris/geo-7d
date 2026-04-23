@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
 import Text from 'components/Text';
 import s from './TableOfContents.module.scss';
-import { type ContentBlock, type Header } from 'types/content';
 import Button from 'components/Button';
 import cn from 'classnames';
 import { useLanguage } from 'contexts/LanguageContext';
+import type { Articles } from 'types/articles';
 
 type TableOfContentsProps = {
-    headers: Header[];
-    blocks: ContentBlock[];
+    headers: Articles[];
 }
 
-const TableOfContents = ({ headers, blocks }: TableOfContentsProps) => {
+const TableOfContents = ({ headers }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState('');
+  const { locale } = useLanguage();
 
   const scrollToHeader = (id: string) => {
     const element = document.getElementById(id);
@@ -26,7 +26,7 @@ const TableOfContents = ({ headers, blocks }: TableOfContentsProps) => {
 
   useEffect(() => {
     const headings = headers
-      .map(block => document.getElementById(block.id))
+      .map(block => document.getElementById(block.slug))
       .filter((el: HTMLElement | null) => el !== null);
 
     console.log(headings)
@@ -52,24 +52,19 @@ const TableOfContents = ({ headers, blocks }: TableOfContentsProps) => {
   }, [headers]);
 
   let firstLevelInd = 0;
-  const renderHeaderItem = (header: Header, index: number) => {
-    const isActive = activeId === header.id;
-    const indent = (header.level - 1) * 48;
-    const isFirstLevel = header.level === 1;
-    firstLevelInd += Number(isFirstLevel); 
-    console.log(header)
+  const renderHeaderItem = (header: Articles, index: number) => {
+    firstLevelInd += 1;
     return (
       <div
-        key={header.id || index}
-        style={{ paddingLeft: indent }}
-        onClick={() => scrollToHeader(header.id)}
-        className={cn(s.headers__item, !isFirstLevel && s.headers__subitem)}
+        key={header.slug || index}
+        onClick={() => scrollToHeader(header.slug)}
+        className={cn(s.headers__item)}
       >
-        {isFirstLevel && <Button view={isActive ? 'dark' : 'light'} className={s.headers__btn}>{firstLevelInd}</Button>}
+        <Button view={'dark'} className={s.headers__btn}>{firstLevelInd}</Button>
         <Text className={cn(s.borderEffect, s.headers__text)}
-              view={isFirstLevel ? 'p-16' : 'p-14'}
+              view={'p-16'}
               color='primary'>
-          {header.title}
+          {locale === 'ru' ? header.name : header.name_en}
         </Text>
       </div>
     );
@@ -77,11 +72,9 @@ const TableOfContents = ({ headers, blocks }: TableOfContentsProps) => {
 
   if (!headers || headers.length === 0) return null;
 
-  const { locale } = useLanguage();
-
   return (
     <div className={s.sidebar}>
-        <Text className={s.sidebar__title} view='p-16' weight='bold' color='primary'>{locale === 'ru' ? 'СОДЕРЖАНИЕ' : 'TABLE OF CONTENTS'}</Text>
+        <Text className={s.sidebar__title} view='subtitle' weight='bold' color='primary'>{locale === 'ru' ? 'Содержание' : 'Table of contents'}</Text>
         <div className={s.headers}>
             {headers.map((header, idx) => renderHeaderItem(header, idx))}
         </div>

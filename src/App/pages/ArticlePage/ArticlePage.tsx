@@ -7,7 +7,6 @@ import { useArticle } from 'hooks/useArticle';
 import CopyIcon from 'components/icons/CopyIcon';
 import EmailIcon from 'components/icons/EmailIcon';
 import MaksIcon from 'components/icons/MaksIcon';
-import DotIcon from 'components/ArticleWrapper/components/DotIcon';
 import PdfViewer from './components/PdfViewer';
 import { useEffect, useState } from 'react';
 import { getPdfUrl } from 'api/api';
@@ -15,15 +14,17 @@ import LoadingScreen from 'components/LoadingScreen';
 
 const ArticlePage = () => {
     const { locale, t } = useLanguage();
-    const { id } = useParams();
+    const { type, subcategory, id } = useParams<{ type?: string; subcategory?: string; id: string }>();
     const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+    const category = type || 'articles';
 
     const { data, isLoading } = useArticle(id || '');
+
+    console.log(category, subcategory, id)
 
     useEffect(() => {
         const getPdf = async () => {
             if (!data?.pdfPath) return;
-            console.log('Реальный pdfPath из БД:', data.pdfPath);
             const url = await getPdfUrl(data.pdfPath); 
             setPdfUrl(url);
         }
@@ -49,9 +50,9 @@ const ArticlePage = () => {
                 <div>
                     <Text color='accent'>{locale === 'ru' ? `время чтения: ${data.readingTime} минут` : `Reading time: ${data.readingTime} minutes`}</Text>
                     <div className={s.group}>
-                        <Text color='gray'>{locale === 'ru' ? `${data.views} просмотров` : `${data.views} views`}</Text>
-                        <DotIcon />
-                        <Text color='gray'>{`${data.likes}`}</Text>
+                        <Text>{locale === 'ru' ? `${data.views} просмотров` : `${data.views} views`}</Text>
+                        {/* <DotIcon />
+                        <Text>{`${data.likes}`}</Text> */}
                     </div>
                 </div>
 

@@ -79,7 +79,7 @@ export const registerUser = async (name: string, email: string, password: string
         password,
         options: {
             data: { name },
-            emailRedirectTo: 'http://localhost:5173/auth/callback'
+            emailRedirectTo: 'https://geo-7d.vercel.app/auth/callback'
         }
     });
 

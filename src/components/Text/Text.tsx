@@ -23,7 +23,7 @@ export type TextProps = {
     id?: string | undefined;
 };
 
-const Text: React.FC<TextProps> = ({ id, className, view = 'p-16', tag, weight, children, color = 'secondary', maxLines, onClick }: TextProps) => {
+const Text: React.FC<TextProps> = ({ id, className, view = 'p-16', tag, weight, children, color = 'primary', maxLines, onClick }: TextProps) => {
     const Tag = tag || 'p';
 
     return (

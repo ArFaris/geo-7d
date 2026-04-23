@@ -95,7 +95,7 @@ input {
         left: 0;
         width: 0;
         height: 2px;
-        background: $dark;
+        background: $accent;
         transition: $transition;
     }
     
@@ -106,7 +106,7 @@ input {
         left: 0;
         width: 0;
         height: 1px;
-        background: $secondary;
+        background: $dark;
         transition: $transition 0.05s;
     }
     
@@ -122,6 +122,16 @@ input {
     &:active {
         &::after {
             background-color: $accent;
+        }
+    }
+
+    &__light {
+        &::after {
+          background: $secondary;
+        }
+
+        &::before {
+          background: $dark;
         }
     }
 }

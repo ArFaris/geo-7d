@@ -3,9 +3,10 @@
 
 .sidebar {
     max-width: 360px;
+    margin-top: 56px;
     width: 100%;
-    position: absolute;
-    left: $padd-80;
+    margin-inline: auto;
+    text-align: center;
 
     &__title {
         margin-bottom: $padd-32;
@@ -15,6 +16,7 @@
 .headers {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: $padd-20;
 
     &__btn {
@@ -27,6 +29,8 @@
 
     &__item {
         display: flex;
+        flex-direction: column;
+        align-items: center;
         gap: 14px;
     }
 
@@ -41,8 +45,19 @@
 
 @media(max-width: 1280px) {
     .sidebar {
-        position: relative;
         margin-top: 80px;
-        left: 0;
+    }
+}
+
+@media(max-width: 586px) {
+    .headers {
+        backdrop-filter: blur(40px);
+        background-color: $secondary;
+        padding: 20px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar {
+        min-width: 100%;
     }
 }

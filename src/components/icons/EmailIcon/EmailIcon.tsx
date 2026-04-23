@@ -5,7 +5,7 @@ import React from 'react';
 const EmailIcon: React.FC<IconProps> = ({
     width = 24,
     height = 24,
-    color = 'secondary',
+    color = 'primary',
     ...props
 }: IconProps) => {
     return (

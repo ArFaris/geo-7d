@@ -7,10 +7,11 @@ import { useLanguage } from 'contexts/LanguageContext';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import s from './ProfilePage.module.scss';
+import Title from 'components/Title';
 
 const ProfilePage = () => {
     const { user } = useAuth();
-    const { locale, t } = useLanguage();
+    const { t } = useLanguage();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
 
@@ -35,11 +36,7 @@ const ProfilePage = () => {
             <div className={s.earth__wrapper}><EarthIcon className={s.earth}/></div>
 
             <section className={s.page}>
-                <header className={s.header}>
-                    <span className={s.line}></span>
-                    <Text weight='bold' view='title-small' color='secondary'>{locale === 'ru' ? 'ПРОФИЛЬ' : 'PROFILE'}</Text>
-                    <span className={s.line}></span>
-                </header>
+                <Title title={'profile'} />
 
                 <div className={s.fields}>
                     <div>

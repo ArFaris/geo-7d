@@ -1,0 +1,16 @@
+@use '/src/styles/variables.scss' as *;
+@use '/src/styles/global.scss';
+
+.terms {
+    display: flex;
+    flex-direction: column;
+    gap: $padd-40;
+    margin-block: 56px;
+}
+
+.term {
+    display: flex;
+    flex-direction: column;
+    gap: $padd-20;
+    scroll-margin-top: 124px;
+}
