@@ -31,11 +31,11 @@ const HomePage = () => {
             </div>
 
             <div className={s.links}>
-                <article className={s.link} onClick={() => navigate('/content/news')}><Text color='primary' view='subtitle'>{t('nav.news')}</Text></article>
-                <article className={s.link} onClick={() => navigate('/content/reviews')}><Text color='primary' view='subtitle'>{t('nav.reviews')}</Text></article>
-                <article className={s.link} onClick={() => navigate('/content/analytics')}><Text color='primary' view='subtitle'>{t('nav.analytics')}</Text></article>
-                <article className={s.link} onClick={() => navigate('/content/articles/vestnik')}><Text color='primary' view='subtitle'>{t('nav.articles')}</Text></article>
-                <article className={s.link} onClick={() => navigate('/dictionary')}><Text color='primary' view='subtitle'>{t('nav.dict')}</Text></article>
+                <article className={s.link} onClick={() => navigate('/content/news')}><Text color='secondary' view='subtitle'>{t('nav.news')}</Text></article>
+                <article className={s.link} onClick={() => navigate('/content/reviews')}><Text color='secondary' view='subtitle'>{t('nav.reviews')}</Text></article>
+                <article className={s.link} onClick={() => navigate('/content/analytics')}><Text color='secondary' view='subtitle'>{t('nav.analytics')}</Text></article>
+                <article className={s.link} onClick={() => navigate('/content/articles/vestnik')}><Text color='secondary' view='subtitle'>{t('nav.articles')}</Text></article>
+                <article className={s.link} onClick={() => navigate('/dictionary')}><Text color='secondary' view='subtitle'>{t('nav.dict')}</Text></article>
             </div>
         </section>
     );
